@@ -12,8 +12,8 @@ BEFORE SUBMITTING: Please search to make sure this issue hasn't been reported al
 
 ## Environment
  - Browser: Chrome
- - Wallet: MetaMask
- - Chain: Ethereum mainnet
+ - Wallet: Kaikas
+ - Chain: Klaytn mainnet
 
 ## Steps to reproduce
  1. Go to
