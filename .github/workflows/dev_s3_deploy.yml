@@ -35,7 +35,7 @@ jobs:
 
       - name: Build static files
         env:
-          REACT_APP_GATEWAY_URL: ${{ secrets.REACT_APP_GATEWAY_URL_DEV }}
+          NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: ${{ secrets.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION }}
         run: yarn build
 
       - name: Sync to S3 bucket and validation cloudfront
