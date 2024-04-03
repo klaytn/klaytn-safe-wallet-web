@@ -27,17 +27,16 @@ jobs:
         with:
           node-version: '18'
 
-#      - name: Installing dependencies
-#        run: |
-#          yarn install
-#          cp -r ./safe-deployment-assets/* ./node_modules/@gnosis.pm/safe-deployments/dist/assets/
-#          cp -r ./safe-deployment-assets/* ./node_modules/@gnosis.pm/safe-core-sdk/node_modules/@gnosis.pm/safe-deployments/dist/assets/
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile && yarn after-install
+
       - name: Build static files
         env:
           NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: ${{ secrets.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION }}
+          NEXT_PUBLIC_IS_PRODUCTION: ${{ secrets.NEXT_PUBLIC_IS_PRODUCTION }}
+          NEXT_PUBLIC_IS_OFFICIAL_HOST: ${{ secrets.NEXT_PUBLIC_IS_OFFICIAL_HOST }}
+          NEXT_PUBLIC_WC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_WC_PROJECT_ID }}
         run: yarn build
 
       - name: Sync to S3 bucket and validation cloudfront

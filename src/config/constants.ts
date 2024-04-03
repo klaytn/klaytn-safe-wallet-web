@@ -1,5 +1,3 @@
-import chains from './chains'
-
 export const IS_PRODUCTION = process.env.NEXT_PUBLIC_IS_PRODUCTION === 'true'
 export const IS_DEV = process.env.NODE_ENV === 'development'
 
@@ -28,10 +26,7 @@ export const TREZOR_EMAIL = 'support@klaytn.foundation'
 export const CYPRESS_MNEMONIC = process.env.NEXT_PUBLIC_CYPRESS_MNEMONIC || ''
 
 // Safe Token
-export const SAFE_TOKEN_ADDRESSES: { [chainId: string]: string } = {
-  [chains.eth]: '0x5aFE3855358E112B5647B952709E6165e1c1eEEe',
-  [chains.sep]: '0xd16d9C09d13E9Cf77615771eADC5d51a1Ae92a26',
-}
+export const SAFE_TOKEN_ADDRESSES: { [chainId: string]: string } = {}
 
 // Safe Apps
 export const SAFE_APPS_INFURA_TOKEN = process.env.NEXT_PUBLIC_SAFE_APPS_INFURA_TOKEN || INFURA_TOKEN

@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react'
-import { useCallback, useEffect } from 'react'
 
 import {
   SidebarList,
@@ -8,8 +7,7 @@ import {
   SidebarListItemText,
 } from '@/components/sidebar/SidebarList'
 import { useAppDispatch, useAppSelector } from '@/store'
-import { selectCookies, CookieType } from '@/store/cookiesSlice'
-import { openCookieBanner } from '@/store/popupSlice'
+import { selectCookies } from '@/store/cookiesSlice'
 import HelpCenterIcon from '@/public/images/sidebar/help-center.svg'
 import { ListItem } from '@mui/material'
 import DebugToggle from '../DebugToggle'

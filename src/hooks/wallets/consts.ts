@@ -3,10 +3,8 @@ export const enum WALLET_KEYS {
   WALLETCONNECT_V2 = 'WALLETCONNECT_V2',
   DCENT = 'DCENT',
   SOCIAL = 'SOCIAL_LOGIN',
-  COINBASE = 'COINBASE',
   LEDGER = 'LEDGER',
   TREZOR = 'TREZOR',
-  KEYSTONE = 'KEYSTONE',
 }
 
 // TODO: Check if undefined is needed as a return type, possibly couple this with WALLET_MODULES
@@ -14,11 +12,9 @@ export const CGW_NAMES: { [key in WALLET_KEYS]: string | undefined } = {
   [WALLET_KEYS.INJECTED]: 'detectedwallet',
   [WALLET_KEYS.WALLETCONNECT_V2]: 'walletConnect_v2',
   [WALLET_KEYS.DCENT]: 'dcent',
-  [WALLET_KEYS.COINBASE]: 'coinbase',
   [WALLET_KEYS.SOCIAL]: 'socialSigner',
   [WALLET_KEYS.LEDGER]: 'ledger',
   [WALLET_KEYS.TREZOR]: 'trezor',
-  [WALLET_KEYS.KEYSTONE]: 'keystone',
 }
 
 export const KAIKAS_SVG = `<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 66" width="72" height="66">
