@@ -14,7 +14,6 @@ import {
   gtmSetUserProperty,
   gtmTrack,
 } from '@/services/analytics/gtm'
-import { spindlInit, spindlAttribute } from './spindl'
 import { useAppSelector } from '@/store'
 import { CookieType, selectCookies } from '@/store/cookiesSlice'
 import useChainId from '@/hooks/useChainId'
@@ -43,7 +42,6 @@ const useGtm = () => {
   // Initialize GTM and Spindl
   useEffect(() => {
     gtmInit()
-    spindlInit()
   }, [])
 
   // Enable GA cookies if consent was given
@@ -97,7 +95,6 @@ const useGtm = () => {
   useEffect(() => {
     if (wallet?.address) {
       gtmSetUserProperty(AnalyticsUserProperties.WALLET_ADDRESS, wallet.address)
-      spindlAttribute(wallet.address)
     }
   }, [wallet?.address])
 
