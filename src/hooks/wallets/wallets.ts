@@ -5,6 +5,7 @@ import injectedWalletModule, { ProviderLabel } from '@web3-onboard/injected-wall
 import ledgerModule from '@web3-onboard/ledger/dist/index'
 import trezorModule from '@web3-onboard/trezor'
 import dcentModule from '@web3-onboard/dcent'
+import coinbaseModule from '@web3-onboard/coinbase'
 import walletConnect from '@web3-onboard/walletconnect'
 
 import e2eWalletModule from '@/tests/e2e-wallet'
@@ -56,6 +57,7 @@ for (let _walletName in ProviderLabel) {
   walletFilter[_walletName] = false
 }
 walletFilter['MetaMask'] = true
+walletFilter['Kaikas'] = false
 
 const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit } = {
   [WALLET_KEYS.INJECTED]: () =>
@@ -64,9 +66,11 @@ const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit }
       custom: [KAIKAS_CUSTOM_MODULE],
       /* @ts-ignore */
       filter: walletFilter,
+      displayUnavailable: ['Kaikas', ProviderLabel.MetaMask],
     }) as WalletInit,
   [WALLET_KEYS.WALLETCONNECT_V2]: (chain) => walletConnectV2(chain) as WalletInit,
   [WALLET_KEYS.DCENT]: () => dcentModule() as WalletInit,
+  [WALLET_KEYS.COINBASE]: () => coinbaseModule({ darkMode: prefersDarkMode() }) as WalletInit,
   [WALLET_KEYS.SOCIAL]: (chain) => MpcModule(chain) as WalletInit,
   [WALLET_KEYS.LEDGER]: () => ledgerModule() as WalletInit,
   [WALLET_KEYS.TREZOR]: () => trezorModule({ appUrl: TREZOR_APP_URL, email: TREZOR_EMAIL }) as WalletInit,
