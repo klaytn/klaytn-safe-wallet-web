@@ -145,7 +145,7 @@ const SafeTerms = () => (
     </ol>
     <h3>4. What you agree to and warrant ?</h3>
     <ol start={1}>
-      <li>
+      <ol>
         By using KSafe you hereby agree, and warrant that:
         <ol style={{ listStyleType: 'lower-alpha' }}>
           <li>
@@ -211,7 +211,7 @@ const SafeTerms = () => (
           for any losses caused by the management of Member&apos;s accounts, PCs, mobile devices and other various
           authentication tools or by allowing another person to use the same.
         </li>
-      </li>
+      </ol>
     </ol>
     <h3>5. What Licenses and access do we grant to you ?</h3>
     <ol start={1}>
