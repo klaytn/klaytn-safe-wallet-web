@@ -13,30 +13,30 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN_PROD }}
           role-session-name: SessionForKlaytnActions
           aws-region: ${{ secrets.AWS_REGION_PROD }}
 
       - name: Installing Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '18'
 
-      - name: Installing dependencies
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile && yarn after-install
 
       - name: Build static files
         env:
-          NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: ${{ secrets.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION }}
+          NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: ${{ secrets.NEXT_PUBLIC_GATEWAY_URL_PROD }}
           NEXT_PUBLIC_IS_PRODUCTION: ${{ secrets.NEXT_PUBLIC_IS_PRODUCTION }}
           NEXT_PUBLIC_IS_OFFICIAL_HOST: ${{ secrets.NEXT_PUBLIC_IS_OFFICIAL_HOST }}
-          NEXT_PUBLIC_WC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_WC_PROJECT_ID }}
+          NEXT_PUBLIC_WC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_WC_PROJECT_ID_PROD }}
         run: yarn build
 
       - name: Sync to S3 bucket and validation cloudfront
@@ -44,5 +44,5 @@ jobs:
           S3_BUCKET: ${{ secrets.S3_BUCKET_PROD }}
           CLOUDFRONT_ID: ${{ secrets.CLOUDFRONT_ID_PROD }}
         run: |
-          aws s3 sync ./build $S3_BUCKET --delete
+          aws s3 sync ./out $S3_BUCKET --delete
           aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
