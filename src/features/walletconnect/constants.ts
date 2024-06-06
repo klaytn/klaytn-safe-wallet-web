@@ -30,7 +30,7 @@ export const SAFE_COMPATIBLE_METHODS = [
 export const SAFE_COMPATIBLE_EVENTS = ['chainChanged', 'accountsChanged']
 
 export const SAFE_WALLET_METADATA = {
-  name: 'KlaytnSafe{Wallet}',
+  name: 'KaiaSafe{Wallet}',
   url: 'https://safe.klaytn.foundation',
   description: 'Smart contract wallet for Klaytn',
   icons: ['https://safe.klaytn.foundation/images/logo-round.svg'],

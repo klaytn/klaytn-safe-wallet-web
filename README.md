@@ -6,12 +6,12 @@ Since the launch of Kaia Blockchain this repository has been parked in favour of
 
 ---
 
-# <img src="/public/images/logo.svg" height="60" valign="middle" alt="KlaytnSafe{Wallet}" style="background: #fff; padding: 20px; margin: 0 -20px" />
+# <img src="/public/images/logo.svg" height="60" valign="middle" alt="KaiaSafe{Wallet}" style="background: #fff; padding: 20px; margin: 0 -20px" />
 
 [![License](https://img.shields.io/github/license/klaytn/klaytn-safe-wallet-web)](https://github.com/klaytn/klaytn-safe-wallet-web/blob/main/LICENSE)
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/klaytn/klaytn-safe-wallet-web)
 
-The default Klaytn Safe web interface.
+The default Kaia Safe web interface.
 
 ## Contributing
 

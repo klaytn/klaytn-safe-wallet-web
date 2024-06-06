@@ -23,11 +23,11 @@ const SafeTerms = () => (
       </Link>
       .
     </p>
-    <h3>1. What is the Klaytn Safe?</h3>
-    Klaytn Safe is a multi-sig wallet for the Klaytn ecosystem. It is a fork of the well-known multi-sig wallet Safe
+    <h3>1. What is the Kaia Safe?</h3>
+    Kaia Safe is a multi-sig wallet for the Klaytn ecosystem. It is a fork of the well-known multi-sig wallet Safe
     (prev. Gnosis Safe).
     <br />
-    The following are the benefits of Klaytn Safe.
+    The following are the benefits of Kaia Safe.
     <ol start={1}>
       <li>
         <b>Store and Transfer KLAY, KCTs (KIP7, KIP13):</b> Users can deposit your virtual assets such as KLAY and
@@ -49,11 +49,11 @@ const SafeTerms = () => (
     <h3>2. Terms</h3>
     <ol start={1}>
       <li>
-        &ldquo;KSafe&rdquo; or &ldquo;Services&rdquo; refers to the Klaytn Safe services, the Klay Safe, provided by
+        &ldquo;KSafe&rdquo; or &ldquo;Services&rdquo; refers to the Kaia Safe services, the Kaia Safe, provided by
         Klaytn, whether through{' '}
         <Link href="https://klaytn.foundation/">
           <MUILink target="_blank" rel="noreferrer">
-            Klaytn Foundation
+            Kaia Foundation
           </MUILink>
         </Link>{' '}
         website any associated website, API, or mobile application related, linked or otherwise connected thereto. You
@@ -454,7 +454,7 @@ const Terms: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'KlaytnSafe{Wallet} – Terms'}</title>
+        <title>{'KaiaSafe{Wallet} – Terms'}</title>
       </Head>
 
       <main>{IS_OFFICIAL_HOST && <SafeTerms />}</main>

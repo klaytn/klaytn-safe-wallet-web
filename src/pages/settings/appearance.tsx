@@ -32,7 +32,7 @@ const Appearance: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'KlaytnSafe{Wallet} – Settings – Appearance'}</title>
+        <title>{'KaiaSafe{Wallet} – Settings – Appearance'}</title>
       </Head>
 
       <SettingsHeader />

@@ -3,8 +3,8 @@ import { ContentSecurityPolicy, StrictTransportSecurity } from '@/config/securit
 import lightPalette from '@/components/theme/lightPalette'
 import darkPalette from '@/components/theme/darkPalette'
 
-const descriptionText = 'Klaytn Safe is the most trusted platform to manage digital assets on Klaytn blockchain network'
-const titleText = 'KlaytnSafe{Wallet}'
+const descriptionText = 'Kaia Safe is the most trusted platform to manage digital assets on Klaytn blockchain network'
+const titleText = 'KaiaSafe{Wallet}'
 
 const MetaTags = ({ prefetchUrl }: { prefetchUrl: string }) => (
   <>
