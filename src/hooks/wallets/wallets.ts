@@ -48,6 +48,7 @@ for (let _walletName in ProviderLabel) {
 walletFilter['MetaMask'] = true
 
 const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit } = {
+  [WALLET_KEYS.KAIKAS]: () => kaikasModule() as WalletInit,
   [WALLET_KEYS.INJECTED]: () =>
     injectedWalletModule({
       /* @ts-ignore */
@@ -60,7 +61,6 @@ const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit }
   [WALLET_KEYS.SOCIAL]: (chain) => MpcModule(chain) as WalletInit,
   [WALLET_KEYS.LEDGER]: () => ledgerModule() as WalletInit,
   [WALLET_KEYS.TREZOR]: () => trezorModule({ appUrl: TREZOR_APP_URL, email: TREZOR_EMAIL }) as WalletInit,
-  [WALLET_KEYS.KAIKAS]: () => kaikasModule() as WalletInit,
 }
 
 export const getAllWallets = (chain: ChainInfo): WalletInits => {
