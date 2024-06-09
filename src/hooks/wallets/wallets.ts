@@ -9,9 +9,10 @@ import coinbaseModule from '@web3-onboard/coinbase'
 import walletConnect from '@web3-onboard/walletconnect'
 
 import e2eWalletModule from '@/tests/e2e-wallet'
-import { CGW_NAMES, WALLET_KEYS, KAIKAS_SVG } from './consts'
+import { CGW_NAMES, WALLET_KEYS } from './consts'
 import MpcModule from '@/services/mpc/SocialLoginModule'
 import { SOCIAL_WALLET_OPTIONS } from '@/services/mpc/config'
+import kaikasModule from './kaikasWallet'
 
 const prefersDarkMode = (): boolean => {
   return window?.matchMedia('(prefers-color-scheme: dark)')?.matches
@@ -40,33 +41,18 @@ const walletConnectV2 = (chain: ChainInfo) => {
   })
 }
 
-const KAIKAS_CUSTOM_MODULE = {
-  label: 'Kaikas',
-  injectedNamespace: 'klaytn',
-  checkProviderIdentity: ({ provider }: { provider: any }) => !!provider && !!provider['_kaikas'],
-  getIcon: () => KAIKAS_SVG,
-  getInterface: () => ({
-    provider: window.klaytn,
-  }),
-  platforms: ['desktop'],
-  externalUrl: 'https://app.kaikas.io/',
-}
-
 let walletFilter: any = {}
 for (let _walletName in ProviderLabel) {
   walletFilter[_walletName] = false
 }
 walletFilter['MetaMask'] = true
-walletFilter['Kaikas'] = false
 
 const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit } = {
   [WALLET_KEYS.INJECTED]: () =>
     injectedWalletModule({
       /* @ts-ignore */
-      custom: [KAIKAS_CUSTOM_MODULE],
-      /* @ts-ignore */
       filter: walletFilter,
-      displayUnavailable: ['Kaikas', ProviderLabel.MetaMask],
+      displayUnavailable: [ProviderLabel.MetaMask],
     }) as WalletInit,
   [WALLET_KEYS.WALLETCONNECT_V2]: (chain) => walletConnectV2(chain) as WalletInit,
   [WALLET_KEYS.DCENT]: () => dcentModule() as WalletInit,
@@ -74,6 +60,7 @@ const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit }
   [WALLET_KEYS.SOCIAL]: (chain) => MpcModule(chain) as WalletInit,
   [WALLET_KEYS.LEDGER]: () => ledgerModule() as WalletInit,
   [WALLET_KEYS.TREZOR]: () => trezorModule({ appUrl: TREZOR_APP_URL, email: TREZOR_EMAIL }) as WalletInit,
+  [WALLET_KEYS.KAIKAS]: () => kaikasModule() as WalletInit,
 }
 
 export const getAllWallets = (chain: ChainInfo): WalletInits => {
